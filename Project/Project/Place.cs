@@ -25,7 +25,10 @@ namespace Project
         public string Name { set; get; }
         public string Address { set; get; }
         public Guid IdPlace { set; get; }
+        public float Sum{ set; get; }
 
+        public float Avg {set; get;}
+        public int NumberofReview { set; get; }
         public Guid City { set; get; }
         public List<Review> reviews { set; get; }
         public Place(string name,string address,Guid city)
@@ -38,6 +41,10 @@ namespace Project
         public void addReview(Review review)
         {
             reviews.Add(review);
+            //Sum = Sum + review.Note;
+            //NumberofReview += 1;
+            Avg = (Avg * (NumberofReview) + review.Note) / (NumberofReview + 1);
+            NumberofReview += 1;
         }
         public override string ToString()
         {

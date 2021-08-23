@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "7MgRsvmkhqhupCupsAt/IVs3xkoqG0WINnODrcVPs7yFGtkmoEXlrJKPSwBbHnN5oTohwtD2IsWQy1JBlFRrNA==",
+  "dgSpecHash": "9bRP9Sf0xrNBsKJz5DXM5ee5JTXD8RS1T2b0Ql3GKUSUL6kZ0YViQcKdamtfpeO8+4EkeXaXLeO+3cT4s4eimg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\Project.csproj",
+  "projectFilePath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\Project.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\dariu\\.nuget\\packages\\countrydata.standard\\1.0.1\\countrydata.standard.1.0.1.nupkg.sha512",
     "C:\\Users\\dariu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\dariu\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\dariu\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\dariu\\.nuget\\packages\\ninject\\3.3.4\\ninject.3.3.4.nupkg.sha512",
     "C:\\Users\\dariu\\.nuget\\packages\\system.globalization\\4.0.11\\system.globalization.4.0.11.nupkg.sha512",
     "C:\\Users\\dariu\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",

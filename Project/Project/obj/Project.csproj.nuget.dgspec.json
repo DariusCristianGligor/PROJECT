@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\Project.csproj": {}
+    "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\Project.csproj": {
+    "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\Project.csproj",
+        "projectUniqueName": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\Project.csproj",
         "projectName": "Project",
-        "projectPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\Project.csproj",
+        "projectPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\Project.csproj",
         "packagesPath": "C:\\Users\\dariu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\obj\\",
+        "outputPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "CountryData.Standard": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "Ninject": {
               "target": "Package",
               "version": "[3.3.4, )"

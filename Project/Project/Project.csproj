@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CountryData.Standard" Version="1.0.1" />
     <PackageReference Include="Ninject" Version="3.3.4" />
     <PackageReference Include="System.Globalization" Version="4.0.11" />
   </ItemGroup>

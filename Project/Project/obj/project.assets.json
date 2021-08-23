@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "CountryData.Standard/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/CountryData.Standard.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/CountryData.Standard.dll": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -18,6 +30,15 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Ninject/3.3.4": {
@@ -145,6 +166,18 @@
     }
   },
   "libraries": {
+    "CountryData.Standard/1.0.1": {
+      "sha512": "tz5AqBDp63UYGjdCQav3evXlIWqHfBZmCtzg8eHSSTb7DRnQ4ldNtQ+m4SFHvuXdjAZpy71LtcbGg31QZ1/XDA==",
+      "type": "package",
+      "path": "countrydata.standard/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "countrydata.standard.1.0.1.nupkg.sha512",
+        "countrydata.standard.nuspec",
+        "lib/netstandard2.0/CountryData.Standard.dll"
+      ]
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -173,6 +206,37 @@
         "microsoft.netcore.targets.1.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
+      ]
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "Ninject/3.3.4": {
@@ -798,6 +862,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "CountryData.Standard >= 1.0.1",
       "Ninject >= 3.3.4",
       "System.Globalization >= 4.0.11"
     ]
@@ -808,11 +873,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\Project.csproj",
+      "projectUniqueName": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\Project.csproj",
       "projectName": "Project",
-      "projectPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\Project.csproj",
+      "projectPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\Project.csproj",
       "packagesPath": "C:\\Users\\dariu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\PROJECT\\Project\\Project\\obj\\",
+      "outputPath": "C:\\Users\\dariu\\Desktop\\IA\\PROJECT\\Creational-Presentation\\PROJECT\\Project\\Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -841,6 +906,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "CountryData.Standard": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          },
           "Ninject": {
             "target": "Package",
             "version": "[3.3.4, )"

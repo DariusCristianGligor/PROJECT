@@ -1,12 +1,18 @@
-﻿using System;
+﻿using CountryData.Standard;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+
 namespace Project
 {
     class Program
     {
         static void Main(string[] args)
         {
+            string aa= getAllCountries();
+            Console.WriteLine(aa);
+            getAllRegionByCountry(aa);
 
             DataBaseSingleton a = new DataBaseSingleton();
             a.Add();
@@ -190,6 +196,41 @@ namespace Project
         public static void client(CategoryComponent component)
         {
             Console.WriteLine("RESULT: " + component.addToDescription());
+        }
+        public static string getAllCountries()
+        {
+            var helper = new CountryHelper();
+            var data = helper.GetCountryData();
+            
+            var countriesData = data.Select(c => c.CountryName).ToList();
+            var countriesShort = data.Select(c => c.CountryShortCode).ToList();
+            int i = 1;
+            foreach (var country in countriesData)
+            {
+                Console.Write($"{i}.");
+                Console.WriteLine(country);
+                i++;
+            }
+            i = 1;
+            foreach (var countryshort in countriesShort)
+            {
+                Console.Write($"{i}.");
+                Console.WriteLine(countryshort);
+                i++;
+            }
+            Console.WriteLine("Select the country number:");
+            int a= int.Parse(Console.ReadLine());
+            return countriesShort[--a];
+        }
+
+        public static void getAllRegionByCountry(string country)
+        {
+            var helper = new CountryHelper();
+            var regions = helper.GetRegionByCountryCode(country);
+            foreach (var region in regions)
+            {
+                Console.WriteLine(region.Name);
+            }
         }
     }
 }
