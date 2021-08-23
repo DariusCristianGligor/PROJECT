@@ -35,7 +35,7 @@ namespace Project
             ServiceLocator.RegisterAll();
             var userSerice = ServiceLocator.Resolve<WriteWithOracle>();
             var userSerice2 = ServiceLocator.Resolve<WriteWithSqlServer>();
-            User user = new User("Marian", "marian@yahoo.com","asdasd" ,"LPX52qqqaz", userSerice);
+            User user = new User("Marianaaaaaaaaaaaaaaaaaaaaaaaa", "marian@yahoo.com","asdasd" ,"LPX52qqqaz", userSerice);
             User user2 = new User("Marian", "marian@yahoo.com","asdasd" ,"LPX52qqqaz", userSerice2);
             //ServiceLocator.RegisterAll();
             user.WriteInDataBaze();
