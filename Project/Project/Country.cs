@@ -9,16 +9,16 @@ namespace Project
     class Country
     {
         public string Name { set; get; }
-        public Guid idCountry { get; }
-        public List<Guid> CityList { set; get; }
+        public Guid IdCountry { get; }
+        public List<City> Cities { set; get; }
         public Country(string name)
         {
-            idCountry = new Guid();
+            IdCountry = new Guid();
             Name = name;
         }
-        public void addCity(Guid city)
+        public void AddCity(City city)
         {
-            CityList.Add(city);
+            Cities.Add(city);
         }
         public override string ToString()
         {
