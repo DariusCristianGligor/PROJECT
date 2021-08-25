@@ -17,8 +17,12 @@ namespace Domain
         public Guid Id { get; set; }
         public int Stars { get; set; }
         public Price CostOfPlace{get;set;}
-
+        public Guid IdPlAce { get; set; }
         public Place Place { get; set; }
+        public Review()
+        {
+             
+        }
         public Review(int stars, Price costofplace, Place place)
         {
             Id = new Guid();

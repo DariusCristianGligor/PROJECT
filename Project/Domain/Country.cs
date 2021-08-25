@@ -8,12 +8,17 @@ namespace Domain
 {
      public class Country
     {
+        public Guid Id { get; set; }
         public string Name { set; get; }
-        public Guid IdCountry { get; }
         public List<City> Cities { set; get; }
+
+        public Country()
+        {
+
+        }
         public Country(string name)
         {
-            IdCountry = new Guid();
+            Id = new Guid();
             Name = name;
         }
         public Country(string name, List<City> cities):this(name)

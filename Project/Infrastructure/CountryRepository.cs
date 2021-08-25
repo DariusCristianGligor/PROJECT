@@ -8,12 +8,24 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    class CountryRepository : ICountryRepository
+    public class CountryRepository : ICountryRepository
     {
         private Db db = new Db();
+        private readonly ReviewNowContext _dbContext;
+
+        public CountryRepository(ReviewNowContext dbContext)
+        {
+
+            _dbContext = dbContext;
+        }
         public List<Country> GetAll()
         {
             return db.Countries;
+          //  return _dbContext.Countries;
+        }
+        public void AddCountry(Country country)
+        {
+            _dbContext.Countries.Add(country);
         }
     }
 }

@@ -15,9 +15,14 @@ namespace Domain
 
         public float Avg {set; get;}
         public int NumberOfReview { set; get; }
+        public Guid IdCity { set; get; }
         public City City { set; get; }
         public List<Review> Reviews { set; get; }
         public List<Category> Categories { set; get; }
+        public Place()
+        {
+
+        }
         public Place(string name,string address,City city)
         {
         Id = new Guid();

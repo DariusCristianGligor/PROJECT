@@ -11,7 +11,12 @@ namespace Project
     {
         static void Main(string[] args)
         {
-
+            var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewNow;Trusted_Connection=True;";
+            using (var dbContext = new ReviewNowContext(connString))
+            {
+                dbContext.Database.EnsureCreated();
+                Console.WriteLine("Doneeee");
+            }
 
             //Guid asd = new Guid();
             //PlaceRepository place= new PlaceRepository();
