@@ -4,19 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project
+namespace Domain
 {
-    class Country
+     public class Country
     {
         public string Name { set; get; }
-        public Guid idCountry { get; }
+        public Guid IdCountry { get; }
         public List<City> Cities { set; get; }
         public Country(string name)
         {
-            idCountry = new Guid();
+            IdCountry = new Guid();
             Name = name;
         }
-        public void addCity(City city)
+        public Country(string name, List<City> cities):this(name)
+        {
+            Cities = cities;
+        }
+        public void AddCity(City city)
         {
             Cities.Add(city);
         }

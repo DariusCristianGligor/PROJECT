@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsolePresentation", "Project\ConsolePresentation.csproj", "{B04DAF45-9955-438C-B4FD-0108C40BFAE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{CD4B7186-F033-45D5-9DAD-D7EDBCAE20DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{3726CBCC-EDCB-4C3B-9F7D-C8C7203B6F32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extra", "Extra", "{0514F2CC-DA59-4699-9BCE-BDA8F6CF035C}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectStructure.txt = ProjectStructure.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3BDCD7E5-BD96-4639-8173-1B3D761F250E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proiect", "Proiect", "{6642B534-EDDA-4605-904E-EEFA6FBA4054}"
+	ProjectSection(SolutionItems) = preProject
+		Project\Category.cs = Project\Category.cs
+		Project\CategoryComponent.cs = Project\CategoryComponent.cs
+		Project\CategoryDecoratorConcret.cs = Project\CategoryDecoratorConcret.cs
+		Project\CategoryEat.cs = Project\CategoryEat.cs
+		Project\CategoryRelax.cs = Project\CategoryRelax.cs
+		Project\CategoryyDecorator.cs = Project\CategoryyDecorator.cs
+		Project\City.cs = Project\City.cs
+		Project\Country.cs = Project\Country.cs
+		Project\DataBaseSingleton.cs = Project\DataBaseSingleton.cs
+		Project\FecadeClass.cs = Project\FecadeClass.cs
+		Project\Interface.cs = Project\Interface.cs
+		Project\IUser.cs = Project\IUser.cs
+		Project\Place.cs = Project\Place.cs
+		Project\Program.cs = Project\Program.cs
+		Project\ProxyClass.cs = Project\ProxyClass.cs
+		Project\Review.cs = Project\Review.cs
+		Project\ServiceLocator.cs = Project\ServiceLocator.cs
+		Project\User.cs = Project\User.cs
+		Project\UserFactory.cs = Project\UserFactory.cs
+		Project\WritewithOracle.cs = Project\WritewithOracle.cs
+		Project\WriteWithSqlServer.cs = Project\WriteWithSqlServer.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B04DAF45-9955-438C-B4FD-0108C40BFAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B04DAF45-9955-438C-B4FD-0108C40BFAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B04DAF45-9955-438C-B4FD-0108C40BFAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B04DAF45-9955-438C-B4FD-0108C40BFAE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD4B7186-F033-45D5-9DAD-D7EDBCAE20DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD4B7186-F033-45D5-9DAD-D7EDBCAE20DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD4B7186-F033-45D5-9DAD-D7EDBCAE20DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD4B7186-F033-45D5-9DAD-D7EDBCAE20DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3726CBCC-EDCB-4C3B-9F7D-C8C7203B6F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3726CBCC-EDCB-4C3B-9F7D-C8C7203B6F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3726CBCC-EDCB-4C3B-9F7D-C8C7203B6F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3726CBCC-EDCB-4C3B-9F7D-C8C7203B6F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BDCD7E5-BD96-4639-8173-1B3D761F250E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BDCD7E5-BD96-4639-8173-1B3D761F250E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BDCD7E5-BD96-4639-8173-1B3D761F250E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BDCD7E5-BD96-4639-8173-1B3D761F250E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6642B534-EDDA-4605-904E-EEFA6FBA4054} = {0514F2CC-DA59-4699-9BCE-BDA8F6CF035C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F017612-CA91-4877-91CA-44BD19C01755}
+	EndGlobalSection
+EndGlobal

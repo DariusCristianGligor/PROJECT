@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project
+namespace Domain
 {
-    class Category
+    public class Category
     {
-        public Guid IdCategory { get; }
+        public Guid Id { get; }
         public string Name { set; get; }
         public string Description { set; get; }
 
         public Category(string name, string description)
         {
-            IdCategory = new Guid();
+            Id = new Guid();
             Name = name;
             Description = description;
         }

@@ -4,21 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project
+namespace Domain
 {
-    class Country
+    public class City
     {
+        public Guid IdCity { get; }
         public string Name { set; get; }
-        public Guid IdCountry { get; }
-        public List<City> Cities { set; get; }
-        public Country(string name)
+
+        public Country Country { set; get; }
+
+        public City(string name)
         {
-            IdCountry = new Guid();
+            IdCity = new Guid();
             Name = name;
         }
-        public void AddCity(City city)
+        public City(string name, Country country) : this(name)
         {
-            Cities.Add(city);
+            Country = country;
         }
         public override string ToString()
         {
