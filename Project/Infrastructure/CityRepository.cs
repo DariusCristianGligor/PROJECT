@@ -11,9 +11,9 @@ namespace Infrastructure
     class CityRepository : ICityRepository
     {
         private Db db = new Db();
-        public List<City> GetCitiesByCountryId(Guid cityId)
+        public List<City> GetCitiesByCountryId(Guid countryId)
         {
-            return db.Cities.Where(p=>p.Country.IdCountry == cityId).ToList();
+            return db.Cities.Where(p=>p.Country.Id == countryId).ToList();
         }
     }
 }

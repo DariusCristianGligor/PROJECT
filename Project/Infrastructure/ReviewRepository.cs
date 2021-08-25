@@ -16,13 +16,18 @@ namespace Infrastructure
             db.Reviews.Add(review);
         }
 
-        public void Delete(Review review)
+        public void Delete(Guid idReview)
         {
-            db.Reviews.Remove(review);
+            var review = db.Reviews.Where( p => p.Id == idReview).FirstOrDefault();
+            if (review != null)
+            {
+                db.Reviews.Remove(review);
+            }
         }
-        public List<Review> GetReviews(Place place)
+        public List<Review> GetReviews(Guid placeId)
         {
-            return db.Reviews.Where(p =>p.Place == place).ToList();
+            return db.Reviews.Where(p =>p.Place.Id == placeId).ToList();
         }
+
     }
 }

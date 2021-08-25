@@ -19,14 +19,7 @@ namespace Domain
         public Price CostOfPlace{get;set;}
 
         public Place Place { get; set; }
-        public Review(int stars, Price costofplace, Place place)
-        {
-            Id = new Guid();
-            Stars = stars;  
-            CostOfPlace = costofplace;
-            Place = place;
-        }
-     
+       
         public override string ToString()
         {
             return $"Name:{Place}::{Stars}";

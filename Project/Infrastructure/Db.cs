@@ -19,7 +19,7 @@ namespace Infrastructure
             Country romania = new Country("Romania");
             Cities3 = new List<City>
             {
-            new City("Alba Iulia",romania),
+            new City("Alba Iulia",romania)
             new City("Sibiu",romania),
             new City("Timisoara",romania),
             new City("Cluj-Napoca",romania),

@@ -11,13 +11,12 @@ namespace Domain
         public Guid Id { set; get; }
         public string Name { set; get; }
         public string Address { set; get; }
-        public float Sum{ set; get; }
-
+        public float SumStarts{ set; get; }
         public float Avg {set; get;}
         public int NumberOfReview { set; get; }
-        public City City { set; get; }
-        public List<Review> Reviews { set; get; }
-        public List<Category> Categories { set; get; }
+        public City City { set; get;}
+        public List<Review> Reviews { set; get;}
+        public List<Category> Categories { set; get;}
         public Place(string name,string address,City city)
         {
         Id = new Guid();
@@ -30,7 +29,7 @@ namespace Domain
             Categories = categories;
         }
 
-            public void AddCategory(Category category)
+        public void AddCategory(Category category)
         {
             Categories.Add(category);
         }

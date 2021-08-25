@@ -8,14 +8,14 @@ namespace Domain
 {
     public class City
     {
-        public Guid IdCity { get; }
+        public Guid Id { get; set; }
         public string Name { set; get; }
 
         public Country Country { set; get; }
 
         public City(string name)
         {
-            IdCity = new Guid();
+            Id = new Guid();
             Name = name;
         }
         public City(string name, Country country) : this(name)

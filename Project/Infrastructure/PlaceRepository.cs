@@ -12,16 +12,17 @@ namespace Infrastructure
     {
         private Db db = new Db();
 
-        public List<Place> GetAllByCityId(Guid city)
+        public List<Place> GetAllByCityId(Guid cityId)
         {
-            return db.Places.Where(p => p.City.IdCity == city).ToList();
+            return db.Places.Where(p => p.City.Id == cityId).ToList();
         }
 
-        public List<Place> GetAllByCityIdAndCategoryId(Guid city, Guid categoty)
+        public List<Place> GetAllByCityIdAndCategoryId(Guid cityId, List<Guid> categoriesId)
         {
             List<Place> places = new List<Place>();
-            places = GetAllByCityId(city);
+            places = GetAllByCityId(cityId);
             return places.Where(p=>(p.Categories.Where(j=>j.Id==categoty))!=null).ToList();
+            places.Where(p=>p.City=cityId)
         }
     }
 }
