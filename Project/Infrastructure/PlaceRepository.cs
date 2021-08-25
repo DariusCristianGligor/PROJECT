@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-   public  class PlaceRepository:IPlaceRepository
+     public class PlaceRepository:IPlaceRepository
     {
         private Db db = new Db();
+        private readonly ReviewNowContext _dbContext;
 
         public List<Place> GetAllByCityId(Guid cityId)
         {
-            return db.Places.Where(p => p.City.Id == cityId).ToList();
+            return db.Places.Where(p => p.City.IdCity == cityId).ToList();
         }
 
         public List<Place> GetAllByCityIdAndCategoryId(Guid cityId, List<Guid> categoriesId)

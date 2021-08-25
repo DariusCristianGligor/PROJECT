@@ -10,9 +10,13 @@ namespace Domain
     {
         public Guid Id { get; set; }
         public string Name { set; get; }
-
+        public Guid IdCountry { set; get; }
         public Country Country { set; get; }
+        public List<Place> Places{ set; get; }
+        public City()
+        {
 
+        }
         public City(string name)
         {
             Id = new Guid();

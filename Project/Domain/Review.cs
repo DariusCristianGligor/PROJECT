@@ -17,9 +17,8 @@ namespace Domain
         public Guid Id { get; set; }
         public int Stars { get; set; }
         public Price CostOfPlace{get;set;}
-
+        public Guid IdPlace { get; set; }
         public Place Place { get; set; }
-       
         public override string ToString()
         {
             return $"Name:{Place}::{Stars}";

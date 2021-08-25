@@ -8,12 +8,24 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : ICategoryRepository
     {
         private Db db = new Db();
+
+        private readonly ReviewNowContext _dbContext;
+
+        public CategoryRepository(ReviewNowContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public List<Category> GetAll()
         {
             return db.Categories;
+            //return _dbContext.Categories;
+        }
+        public void AddCategory(Category category)
+        {
+            _dbContext.Categories.Add(category);
         }
     }
 }

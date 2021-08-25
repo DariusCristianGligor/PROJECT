@@ -10,6 +10,5 @@ namespace Application
     public interface ICategoryRepository
     {
         List<Category> GetAll();
-    
     }
 }

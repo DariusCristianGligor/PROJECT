@@ -11,7 +11,6 @@ namespace Domain
         public Guid Id { get; set; }
         public string Name { set; get; }
         public List<City> Cities { set; get; }
-        
         public override string ToString()
         {
             return $"Name:{Name}";
