@@ -16,7 +16,7 @@ namespace Infrastructure
         {
             builder.HasOne(x => x.Place)
                  .WithMany(y => y.Reviews)
-                 .HasForeignKey(y => y.IdPlAce);
+                 .HasForeignKey(y => y.Id);
         }
 
 

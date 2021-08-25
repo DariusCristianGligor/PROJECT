@@ -15,15 +15,15 @@ namespace Infrastructure
 
         public List<Place> GetAllByCityId(Guid cityId)
         {
-            return db.Places.Where(p => p.City.IdCity == cityId).ToList();
+            return db.Places.Where(p => p.City.Id == cityId).ToList();
         }
 
         public List<Place> GetAllByCityIdAndCategoryId(Guid cityId, List<Guid> categoriesId)
         {
-            List<Place> places = new List<Place>();
-            places = GetAllByCityId(cityId);
-            return places.Where(p=>(p.Categories.Where(j=>j.Id==categoty))!=null).ToList();
-            places.Where(p=>p.City=cityId)
+            //List<Place> places = new List<Place>();
+            //places = GetAllByCityId(cityId);
+            //return places.Where(p=>(p.Categories.Where(j=>j.Id==categoty))!=null).ToList();
+            //places.Where(p=>p.City=cityId)
         }
     }
 }

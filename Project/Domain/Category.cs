@@ -11,17 +11,7 @@ namespace Domain
         public Guid Id { get; set; }
         public string Name { set; get; }
         public string Description { set; get; }
-        public Category()
-        {
-
-        }
-
-        public Category(string name, string description)
-        {
-            Id = new Guid();
-            Name = name;
-            Description = description;
-        }
+       
         public override string ToString()
         {
             return $"Name:{Name}::{Description}";
