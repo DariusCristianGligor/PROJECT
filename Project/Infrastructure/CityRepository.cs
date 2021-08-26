@@ -1,5 +1,6 @@
 ﻿using Application;
 using Domain;
+using infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,6 @@ namespace Infrastructure
     public class CityRepository : ICityRepository
     {
         private Db db = new Db();
-        public List<City> GetCitiesByCountryId(Guid cityId)
-        public List<City> GetCitiesByCountryId(Guid countryId)
         private readonly ReviewNowContext _dbContext;
 
         public CityRepository(ReviewNowContext dbContext)
@@ -20,12 +19,13 @@ namespace Infrastructure
 
             _dbContext = dbContext;
         }
-        public List<City> GetCitiesByCountryId(Guid cityId)
+        public List<City> GetCitiesByCountryId(Guid countryId)
         {
-            return db.Cities.Where(p=>p.Country.IdCountry == cityId).ToList();
-            return db.Cities.Where(p=>p.Country.Id == countryId).ToList();
-            return db.Cities.Where(p=>p.Country.Id == cityId).ToList();
+            //return db.Cities.Where(p=>p.Country. == countryId).ToList();
+            //return db.Cities.Where(p=>p.Country.Id == countryId).ToList();
+            //return db.Cities.Where(p=>p.Country.Id == countryId).ToList();
             //return _dbContext.Cities.Where(p=>p.Country.Id == cityId).ToList();
+            return _dbContext.Cities.Where(x => x.CountryId == countryId).ToList();
         }
         public void AddCity(City city)
         {

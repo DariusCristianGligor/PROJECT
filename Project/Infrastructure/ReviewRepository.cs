@@ -1,5 +1,6 @@
 ﻿using Application;
 using Domain;
+using infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,17 @@ namespace Infrastructure
         }
         public void Add(Review review)
         {
-            db.Reviews.Add(review);
-            //_dbContext.Reviews.Add(review);
+            _dbContext.Reviews.Add(review);
         }
 
         public void Delete(Guid idReview)
         {
-            return db.Reviews.Where(p =>p.Place.Id == placeId).ToList();
-            return db.Reviews.Where(p =>p.Place == place).ToList();
+            //return db.Reviews.Where(p =>p.Place.Id == placeId).ToList();
+            //return db.Reviews.Where(p =>p.Place == place).ToList();
             //return _dbcontext.Reviews.Where(p =>p.Place == place).ToList();
+            //_dbContext.Reviews.Remove();
         }
 
+        
     }
 }

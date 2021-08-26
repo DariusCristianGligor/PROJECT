@@ -14,9 +14,10 @@ namespace Infrastructure
 
         public void Configure(EntityTypeBuilder<Review> builder)
         {
-            builder.HasOne(x => x.Place)
-                 .WithMany(y => y.Reviews)
-                 .HasForeignKey(y => y.Id);
+            builder.HasKey(x => x.Id);
+            builder.HasOne<Place>(x => x.Place)
+                .WithMany(y => y.Reviews)
+                .HasForeignKey(y => y.PlaceId);
         }
 
 

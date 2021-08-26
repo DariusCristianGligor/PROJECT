@@ -8,7 +8,7 @@ namespace Domain
 {
      public class Country
     {
-        public Guid Id { get; set; }
+        public Guid Id { set; get; }
         public string Name { set; get; }
         public List<City> Cities { set; get; }
         public override string ToString()

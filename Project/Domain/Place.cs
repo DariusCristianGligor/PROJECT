@@ -14,9 +14,10 @@ namespace Domain
         public float SumStarts{ set; get; }
         public float Avg {set; get;}
         public int NumberOfReview { set; get; }
-        public City City { set; get;}
-        public List<Review> Reviews { set; get;}
-        public List<Category> Categories { set; get;}
+        public Guid CityId { set; get; }
+        public City City { set; get; }
+        public List<Review> Reviews { set; get; }
+        public List<Category> Categories { set; get; }
       
   
         public override string ToString()

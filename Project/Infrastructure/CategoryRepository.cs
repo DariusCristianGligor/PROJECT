@@ -1,5 +1,6 @@
 ﻿using Application;
 using Domain;
+using infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +11,18 @@ namespace Infrastructure
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private Db db = new Db();
 
-        private readonly ReviewNowContext _dbContext;
+         private readonly ReviewNowContext _dbContext;
 
         public CategoryRepository(ReviewNowContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public List<Category> GetAll()
-        {
-            return db.Categories;
-            //return _dbContext.Categories;
-        }
+        public List<Category> GetAll() => _dbContext.Categories.ToList();
         public void AddCategory(Category category)
         {
             _dbContext.Categories.Add(category);
         }
+
     }
 }

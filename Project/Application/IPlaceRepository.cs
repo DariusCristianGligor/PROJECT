@@ -10,6 +10,6 @@ namespace Application
     public interface IPlaceRepository
     {
         List<Place> GetAllByCityId(Guid city);
-        List<Place> GetAllByCityIdAndCategoryId(Guid city,Guid category);
+        List<Place> GetAllByCityIdAndCategoryId(Guid cityId, List<Guid> categoriesId);
     }
 }

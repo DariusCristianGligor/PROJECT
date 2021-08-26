@@ -1,5 +1,6 @@
 ﻿using Application;
 using Domain;
+using infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,8 @@ namespace Infrastructure
         }
         public List<Country> GetAll()
         {
-            return db.Countries;
-          //  return _dbContext.Countries;
+           // return db.Countries;
+          return _dbContext.Countries.ToList();
         }
         public void AddCountry(Country country)
         {

@@ -15,10 +15,12 @@ namespace Infrastructure
         {
             builder.Property(x => x.Name)
                 .HasMaxLength(30);
-            builder.HasOne(e => e.Country)
-            .WithMany(c => c.Cities).HasForeignKey(e=>e.IdCountry);
-            builder.HasMany(e => e.Places)
-                .WithOne(x => x.City).HasForeignKey(x=>x.IdCity);
+            builder.HasOne<Country>(e => e.Country)
+            .WithMany(c => c.Cities)
+            .HasForeignKey(e=>e.CountryId);
+            builder.HasMany<Place>(e => e.Places)
+                .WithOne(x => x.City)
+                .HasForeignKey(x=>x.CityId);
             //fluent api.ef core
         }
 

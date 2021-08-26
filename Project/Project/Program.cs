@@ -15,6 +15,16 @@ namespace Project
             using (var dbContext = new ReviewNowContext(connString))
             {
                 dbContext.Database.EnsureCreated();
+                CategoryRepository categoryRepository = new CategoryRepository(dbContext);
+                Category category1 = new Category
+                {
+                    Name = "Distractie",
+                    Id = new Guid(),
+                    Description = "Mergem aici sa ne distram"
+                };
+
+                categoryRepository.AddCategory(category1);
+                dbContext.SaveChanges();
                 Console.WriteLine("Doneeee");
             }
 

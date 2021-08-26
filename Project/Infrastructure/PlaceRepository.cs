@@ -1,5 +1,6 @@
 ﻿using Application;
 using Domain;
+using infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace Infrastructure
 
         public List<Place> GetAllByCityId(Guid cityId)
         {
-            return db.Places.Where(p => p.City.Id == cityId).ToList();
+            //return db.Places.Where(p => p.City.Id == cityId).ToList();
+            return new List<Place>();
         }
 
         public List<Place> GetAllByCityIdAndCategoryId(Guid cityId, List<Guid> categoriesId)
@@ -24,6 +26,12 @@ namespace Infrastructure
             //places = GetAllByCityId(cityId);
             //return places.Where(p=>(p.Categories.Where(j=>j.Id==categoty))!=null).ToList();
             //places.Where(p=>p.City=cityId)
+            return new List<Place>();
+        }
+
+        public void AddCountry(Country country)
+        {
+            _dbContext.Countries.Add(country);
         }
     }
 }

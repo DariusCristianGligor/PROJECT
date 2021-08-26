@@ -16,10 +16,14 @@ namespace Infrastructure
         {
             builder.Property(c => c.Name)
                 .HasMaxLength(30);
-            builder.HasMany(e => e.Reviews)
-                .WithOne(c => c.Place).HasForeignKey(e=>e.Id);
-            builder.HasMany(e => e.Categories);
-            builder.HasOne(c => c.City)
+            builder.HasMany<Review>(e => e.Reviews)
+                .WithOne(c => c.Place)
+                .HasForeignKey(c=>c.PlaceId);
+            //builder.HasMany(e => e.Categories);
+            builder.HasOne<City>(c => c.City)
+                .WithMany(x => x.Places)
+                .HasForeignKey(c=>c.CityId);
+            builder.HasMany<Category>(c => c.Categories)
                 .WithMany(x => x.Places);
         }
     }

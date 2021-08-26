@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    class CountryConfig : IEntityTypeConfiguration<Country>
+    class CategoryConfig : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Country> builder)
-        {
+        public void Configure(EntityTypeBuilder<Category> builder)
+        {   
             builder.Property(x => x.Name)
                 .HasMaxLength(30);
-            builder.HasMany<City>(x => x.Cities)
-                .WithOne(c => c.Country)
-                .HasForeignKey(c=>c.CountryId);
+            builder.HasMany<Place>(x => x.Places)
+                .WithMany(y=>y.Categories);
         }
     }
 }

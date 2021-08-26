@@ -11,13 +11,12 @@ namespace Domain
         public Guid Id { get; set; }
         public string Name { set; get; }
 
-        public Country Country { set; get; }
+        public Guid CountryId { get; set; }
+        public Country Country { get; set; }
 
-        public City(string name)
-        {
-            Id = new Guid();
-            Name = name;
-        }
+        public List<Place> Places { get; set; }
+
+        
         public override string ToString()
         {
             return $"Name:{Name}";

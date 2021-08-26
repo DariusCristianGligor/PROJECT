@@ -9,7 +9,7 @@ namespace Application
 {
     public interface IReviewRepository
     {
-        void Add(Guid place);
-        void Delete(Guid review);
+        void Add(Review review);
+        void Delete(Guid idReview);
     }
 }
