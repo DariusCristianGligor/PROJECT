@@ -23,6 +23,7 @@ namespace Project
                     Description = "Mergem aici sa ne distram"
                 };
 
+
                 categoryRepository.AddCategory(category1);
                 dbContext.SaveChanges();
                 Console.WriteLine("Doneeee");
