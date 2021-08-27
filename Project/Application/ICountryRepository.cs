@@ -7,6 +7,6 @@ namespace Application
 
     public interface ICountryRepository
     {
-        List<Country> GetAll();
+        ICollection<Country> GetAll();
     }
 }

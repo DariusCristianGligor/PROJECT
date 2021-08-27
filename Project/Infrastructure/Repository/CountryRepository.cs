@@ -11,7 +11,7 @@ namespace Infrastructure
 {
     public class CountryRepository : ICountryRepository
     {
-        private Db db = new Db();
+        
         private readonly ReviewNowContext _dbContext;
 
         public CountryRepository(ReviewNowContext dbContext)
@@ -19,14 +19,15 @@ namespace Infrastructure
 
             _dbContext = dbContext;
         }
-        public List<Country> GetAll()
+        public ICollection<Country> GetAll()
         {
-           // return db.Countries;
+           
           return _dbContext.Countries.ToList();
         }
         public void AddCountry(Country country)
         {
             _dbContext.Countries.Add(country);
+      
         }
     }
 }

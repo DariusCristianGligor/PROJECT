@@ -10,7 +10,7 @@ namespace Domain
     {
         public Guid Id { set; get; }
         public string Name { set; get; }
-        public List<City> Cities { set; get; }
+        public ICollection<City> Cities { set; get; }
         public override string ToString()
         {
             return $"Name:{Name}";

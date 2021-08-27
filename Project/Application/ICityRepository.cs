@@ -9,6 +9,6 @@ namespace Application
 {
     public interface ICityRepository
     {
-        List<City> GetCitiesByCountryId(Guid cityId);
+        ICollection<City> GetCitiesByCountryId(Guid cityId);
     }
 }

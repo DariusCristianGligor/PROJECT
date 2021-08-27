@@ -18,10 +18,11 @@ namespace Infrastructure
         {
             _dbContext = dbContext;
         }
-        public List<Category> GetAll() => _dbContext.Categories.ToList();
+        public ICollection<Category> GetAll() => _dbContext.Categories.ToList();
         public void AddCategory(Category category)
         {
             _dbContext.Categories.Add(category);
+       
         }
 
     }

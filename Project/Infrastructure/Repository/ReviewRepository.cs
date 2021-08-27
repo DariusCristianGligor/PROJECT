@@ -11,7 +11,7 @@ namespace Infrastructure
 {
     public class ReviewRepository : IReviewRepository
     {
-        private Db db = new Db();
+       
 
         private readonly ReviewNowContext _dbContext;
 
@@ -23,6 +23,7 @@ namespace Infrastructure
         public void Add(Review review)
         {
             _dbContext.Reviews.Add(review);
+            
         }
 
         public void Delete(Guid idReview)
@@ -31,6 +32,8 @@ namespace Infrastructure
             //return db.Reviews.Where(p =>p.Place == place).ToList();
             //return _dbcontext.Reviews.Where(p =>p.Place == place).ToList();
             //_dbContext.Reviews.Remove();
+            _dbContext.Reviews.RemoveRange(_dbContext.Reviews.Where(x => x.Id == idReview).ToList());
+          
         }
 
         

@@ -9,7 +9,7 @@ namespace Application
 {
     public interface IPlaceRepository
     {
-        List<Place> GetAllByCityId(Guid city);
-        List<Place> GetAllByCityIdAndCategoryId(Guid cityId, List<Guid> categoriesId);
+        ICollection<Place> GetAllByCityId(Guid city);
+        ICollection<Place> GetAllByCityIdAndCategoryId(Guid cityId, ICollection<Guid> categoriesId);
     }
 }

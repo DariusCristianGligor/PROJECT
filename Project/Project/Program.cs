@@ -18,15 +18,105 @@ namespace Project
                 CategoryRepository categoryRepository = new CategoryRepository(dbContext);
                 Category category1 = new Category
                 {
-                    Name = "Distractie",
+                    Name = "Fun",
                     Id = new Guid(),
-                    Description = "Mergem aici sa ne distram"
+                    Description = "You could come here if you want to party"
                 };
-
-
                 categoryRepository.AddCategory(category1);
+                List < Category >categories= new List<Category>();
+                categories.Add(category1);
+                
+                Category category2 = new Category
+                {
+                    Name = "Amusementt",
+                    Id = new Guid(),
+                    Description = "You could come here if you want to joke"
+                };
+                Category category3 = new Category
+                {
+                    Name = "asdasdasd",
+                    Id = new Guid(),
+                    Description = "You could come here if you want to asdasdas"
+                };
+                categories.Add(category2);
+                City city1 = new City
+                {
+                    Name = "Alba",
+                    Id = new Guid(),
+                };
+                City city2 = new City
+                {
+                    Name = "Sibiu",
+                    Id = new Guid(),
+                };
+                City city3 = new City
+                {
+                    Name = "Timisoara",
+                    Id = new Guid(),
+                };
+                City city4 = new City
+                {
+                    Name = "Bucuresti",
+                    Id = new Guid(),
+                };
+                ICollection<City> cities = new List<City>();
+                cities.Add(city1);
+                cities.Add(city2);
+                cities.Add(city3);
+                cities.Add(city4);
+                Domain.Country country = new Domain.Country
+                {
+                    Id = new Guid(),
+                    Name = "Romania",
+                    Cities = cities
+                };
+                city1.Country = country;
+                city2.Country = country;
+                city3.Country = country;
+                city4.Country = country;
+
+                Place martinuzzi = new Place
+                { Id = new Guid(),
+                    Name = "Martinuzzi",
+                    CityId = city1.Id,
+                    SumStarts = 24,
+                    Avg = 12,
+                    Categories = categories,
+                   Address="str.Alba,nr22",
+                   NumberOfReview=2,
+                   City=city1,
+
+                };
+                Review review = new Review {
+                    Id = new Guid(),
+                    Stars=11,
+                    Place=martinuzzi,
+                    PlaceId=martinuzzi.Id,
+                    CostOfPlace=Price.Affordable
+                };
+                List<Review> revv = new List<Review>();
+                revv.Add(review);
+                martinuzzi.Reviews = revv;
+                CityRepository cityRepository = new CityRepository(dbContext);
+                cityRepository.AddCity(city1);
+                cityRepository.AddCity(city2);
+                cityRepository.AddCity(city3);
+                cityRepository.AddCity(city4);
+                PlaceRepository placeRepository = new PlaceRepository(dbContext);
+                placeRepository.AddPlace(martinuzzi);
+                ReviewRepository reviewRepository = new ReviewRepository(dbContext);
+                reviewRepository.Add(review);
+                categoryRepository.AddCategory(category2);
                 dbContext.SaveChanges();
                 Console.WriteLine("Doneeee");
+                ICollection<Guid> categoriesId = new List<Guid>();
+                categoriesId.Add(category3.Id);
+                //categoriesId.Add(category1.Id);
+                ICollection<Place> result= placeRepository.GetAllByCityIdAndCategoryId(city1.Id,categoriesId);
+                foreach(Place a in result)
+                {
+                    Console.WriteLine(a);
+                }
             }
 
             //Guid asd = new Guid();

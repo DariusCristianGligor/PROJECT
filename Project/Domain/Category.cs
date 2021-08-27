@@ -12,7 +12,7 @@ namespace Domain
         public string Name {  get; set; }
         public string Description { get; set; }
        
-        public List<Place> Places { get; set; }
+        public ICollection<Place> Places { get; set; }
         public override string ToString()
         {
             return $"Name:{Name}::{Description}";

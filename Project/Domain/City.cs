@@ -14,7 +14,7 @@ namespace Domain
         public Guid CountryId { get; set; }
         public Country Country { get; set; }
 
-        public List<Place> Places { get; set; }
+        public ICollection<Place> Places { get; set; }
 
         
         public override string ToString()
