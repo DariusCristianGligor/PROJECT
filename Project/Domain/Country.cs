@@ -10,6 +10,7 @@ namespace Domain
     {
         public Guid Id { set; get; }
         public string Name { set; get; }
+        public string ShortName { set; get; }
         public ICollection<City> Cities { set; get; }
         public override string ToString()
         {

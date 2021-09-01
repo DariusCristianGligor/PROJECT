@@ -1,6 +1,7 @@
 ﻿using Application;
 using Domain;
-using infrastructure;
+
+using Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,9 @@ namespace Infrastructure
         public void Add(Review review)
         {
             _dbContext.Reviews.Add(review);
-            
+            var recomandationService = new RecomandationServiceRepository(_dbContext);
+            recomandationService.RecalculateRating(review);
+            _dbContext.SaveChanges();
         }
 
         public void Delete(Guid idReview)

@@ -15,7 +15,7 @@ namespace Infrastructure
         }
         public ReviewNowContext CreateDbContext(string[] args)
         {
-            return new ReviewNowContext(@"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewNowMigration;Trusted_Connection=True;");
+            return new ReviewNowContext(@"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;");
         }
     }
 }

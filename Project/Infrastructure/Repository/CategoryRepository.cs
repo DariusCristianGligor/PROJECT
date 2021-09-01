@@ -1,6 +1,5 @@
 ﻿using Application;
 using Domain;
-using infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,8 @@ namespace Infrastructure
         public void AddCategory(Category category)
         {
             _dbContext.Categories.Add(category);
-       
+            _dbContext.SaveChanges();
+  
         }
 
     }

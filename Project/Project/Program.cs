@@ -11,113 +11,360 @@ namespace Project
     {
         static void Main(string[] args)
         {
-            var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewNow;Trusted_Connection=True;";
-            using (var dbContext = new ReviewNowContext(connString))
+            Transaction();
+            EagerLoading();
+            NPlusOneProblem();
+            LeftJoinFunction();
+            InnerJoin();
+            GetAllPlacesOrderedByRating();
+            WriteDiferentTypesOfqueries();
+                //tranzaction begin
+                //using (var dbContextTransaction = dbContext.Database.BeginTransaction())
+                //{
+                //    try 
+                //    {
+                //        var query = dbContext.Countries.Where(x=>x.ShortName.Contains("T"));
+                //        foreach (var shortName in query)
+                //        {
+                //            shortName.ShortName = null;
+                //        }
+                //        dbContext.SaveChanges();
+                //        dbContextTransaction.Commit();
+                //    }
+
+            //    catch (Exception)
+            //    {
+            //        dbContextTransaction.Rollback();
+            //    }
+
+            //}
+            //tranzactionend
+
+            static void Transaction()
             {
-                dbContext.Database.EnsureCreated();
-                CategoryRepository categoryRepository = new CategoryRepository(dbContext);
-                Category category1 = new Category
+                var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;";
+                using (var dbContext = new ReviewNowContext(connString))
                 {
-                    Name = "Fun",
-                    Id = new Guid(),
-                    Description = "You could come here if you want to party"
-                };
-                categoryRepository.AddCategory(category1);
-                List < Category >categories= new List<Category>();
-                categories.Add(category1);
-                
-                Category category2 = new Category
-                {
-                    Name = "Amusementt",
-                    Id = new Guid(),
-                    Description = "You could come here if you want to joke"
-                };
-                Category category3 = new Category
-                {
-                    Name = "asdasdasd",
-                    Id = new Guid(),
-                    Description = "You could come here if you want to asdasdas"
-                };
-                categories.Add(category2);
-                City city1 = new City
-                {
-                    Name = "Alba",
-                    Id = new Guid(),
-                };
-                City city2 = new City
-                {
-                    Name = "Sibiu",
-                    Id = new Guid(),
-                };
-                City city3 = new City
-                {
-                    Name = "Timisoara",
-                    Id = new Guid(),
-                };
-                City city4 = new City
-                {
-                    Name = "Bucuresti",
-                    Id = new Guid(),
-                };
-                ICollection<City> cities = new List<City>();
-                cities.Add(city1);
-                cities.Add(city2);
-                cities.Add(city3);
-                cities.Add(city4);
-                Domain.Country country = new Domain.Country
-                {
-                    Id = new Guid(),
-                    Name = "Romania",
-                    Cities = cities
-                };
-                city1.Country = country;
-                city2.Country = country;
-                city3.Country = country;
-                city4.Country = country;
 
-                Place martinuzzi = new Place
-                { Id = new Guid(),
-                    Name = "Martinuzzi",
-                    CityId = city1.Id,
-                    SumStarts = 24,
-                    Avg = 12,
-                    Categories = categories,
-                   Address="str.Alba,nr22",
-                   NumberOfReview=2,
-                   City=city1,
+                    using (var dbContextTransaction = dbContext.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            var query = dbContext.Countries.Where(x => x.ShortName.Contains("T"));
+                            foreach (var shortName in query)
+                            {
+                                shortName.ShortName = null;
+                            }
+                            dbContext.SaveChanges();
+                            dbContextTransaction.Commit();
+                        }
 
-                };
-                Review review = new Review {
-                    Id = new Guid(),
-                    Stars=11,
-                    Place=martinuzzi,
-                    PlaceId=martinuzzi.Id,
-                    CostOfPlace=Price.Affordable
-                };
-                List<Review> revv = new List<Review>();
-                revv.Add(review);
-                martinuzzi.Reviews = revv;
-                CityRepository cityRepository = new CityRepository(dbContext);
-                cityRepository.AddCity(city1);
-                cityRepository.AddCity(city2);
-                cityRepository.AddCity(city3);
-                cityRepository.AddCity(city4);
-                PlaceRepository placeRepository = new PlaceRepository(dbContext);
-                placeRepository.AddPlace(martinuzzi);
-                ReviewRepository reviewRepository = new ReviewRepository(dbContext);
-                reviewRepository.Add(review);
-                categoryRepository.AddCategory(category2);
-                dbContext.SaveChanges();
-                Console.WriteLine("Doneeee");
-                ICollection<Guid> categoriesId = new List<Guid>();
-                categoriesId.Add(category3.Id);
-                //categoriesId.Add(category1.Id);
-                ICollection<Place> result= placeRepository.GetAllByCityIdAndCategoryId(city1.Id,categoriesId);
-                foreach(Place a in result)
-                {
-                    Console.WriteLine(a);
+                        catch (Exception)
+                        {
+                            dbContextTransaction.Rollback();
+                        }
+                    }
+
                 }
             }
+            static void EagerLoading()
+            {
+
+                var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;";
+                using (var dbContext = new ReviewNowContext(connString))
+                {
+                    CountryRepository countryRepository = new CountryRepository(dbContext);
+                    List<Domain.Country> countries = countryRepository.GetAllCountriesWithCities();
+                    foreach (var country in countries)
+                    {
+                        Console.WriteLine($"Country:{country.Name} with cities:");
+                        foreach (var city in country.Cities)
+                        {
+                            Console.WriteLine(city.Name);
+                        }
+                    }
+                }
+            }
+            static void NPlusOneProblem()
+            {
+                var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;";
+                using (var dbContext = new ReviewNowContext(connString))
+                {   
+                    foreach (Domain.Country country in dbContext.Countries)
+                    {
+                        Console.WriteLine($"Country:{country.Name} with cities:");
+                        //foreach (var city in country.Cities)
+                        //{
+                        //    Console.WriteLine(city.Name);
+                        //}
+                    }
+
+                }
+
+            }
+            static void LeftJoinFunction()
+            {
+                Console.WriteLine("LeftJoin::--------------------------------------");
+                var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;";
+                using (var dbContext = new ReviewNowContext(connString)) {
+                    IQueryable<City> outer = dbContext.Cities;
+                    IQueryable<Domain.Country> inner = dbContext.Countries;
+
+                    var nameCitiesAndNameCountri =
+                        from city in outer
+                        join country in inner
+                        on city.CountryId equals country.Id into cityAndCountry
+                        from country in cityAndCountry.DefaultIfEmpty()
+                        select new { City = city.Name, Country = country.Name, ShortName = country.ShortName,NumberOfRegion=country.Cities.Count };
+                    foreach (var a in nameCitiesAndNameCountri)
+                    {
+                        Console.WriteLine($"{a.ShortName}::{a.Country}::{a.City}::{a.NumberOfRegion}");
+                    }
+                }
+            }
+            static void InnerJoin()
+            {
+                var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;";
+                using (var dbContext = new ReviewNowContext(connString))
+                {
+                    IQueryable<City> outer = dbContext.Cities;
+                    IQueryable<Domain.Country> inner = dbContext.Countries;
+
+                    var nameCitiesAndNameCountri =
+                        from city in outer
+                        join country in inner
+                        on city.Id equals country.Id
+                        select new { City = city.Name, Country = country.Name, ShortName = country.ShortName };
+                    foreach (var a in nameCitiesAndNameCountri)
+                    {
+                        Console.WriteLine($"{a.ShortName}::{a.Country}::{a.City}");
+                    }
+
+                }
+
+            }
+            static ICollection<Place> GetAllPlacesOrderedByRating()
+            {
+                var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;";
+                using (var dbContext = new ReviewNowContext(connString))
+                {
+                    PlaceRepository placeRepository = new PlaceRepository(dbContext);
+                    return placeRepository.GetAllOrderedByRating();
+                    
+                }
+            }
+            static void WriteDiferentTypesOfqueries()
+            {
+                var connString = @"Server=LAPTOP-R308IB89\SQLEXPRESS;Database=ReviewWithSeed1;Trusted_Connection=True;";
+                using (var dbContext = new ReviewNowContext(connString))
+                {
+           
+                    var reviewss1 = dbContext.Reviews
+                        .AsEnumerable()
+                        .GroupBy(x => x.PlaceId);
+                    foreach (var a in reviewss1)
+                    {
+                        Console.WriteLine(a.Key);
+                    }
+                    var reviewss2 = dbContext.Reviews
+                        .AsEnumerable()
+                        .Where(x => x.Stars > 3)
+                        .GroupBy(x => new { x.PlaceId, x.Stars, x.CostOfPlace })
+                        .OrderBy(g => g.Average(x=>x.Stars));
+
+                    foreach (var a in reviewss2)
+                    {
+                        Console.WriteLine($"{a}");
+                        foreach (var x in a)
+                        {
+                            Console.WriteLine($"{x.CostOfPlace}::{x.Stars}");
+                        }
+                    }
+                    var reviewss3 = dbContext.Reviews
+                        .AsEnumerable()
+                        .Where(x => x.Stars > 3)
+                        .GroupBy(x => new { x.PlaceId, x.Stars, x.CostOfPlace })
+                        .OrderByDescending(g => g.Count());
+                    foreach (var a in reviewss3)
+                    {
+                        Console.WriteLine($"{a}");
+                        foreach (var x in a)
+                        {
+                            Console.WriteLine($"{x.CostOfPlace}::{x.Stars}::");
+                        }
+                    }
+                    var reviewss4 = dbContext.Reviews
+                        .AsEnumerable()
+                        .GroupBy(x => x.PlaceId)
+                        .Select(x => new
+                        {
+                            NameId = x.Key,
+                            Average = x.Average(y => y.Stars),
+                            ReviewCount = x.Count()
+                        }
+                        );
+                    foreach (var a in reviewss4)
+                    {
+                        Console.WriteLine($"{a.NameId}::{a.Average}::{a.ReviewCount}");
+                    }
+                    Console.WriteLine("-----------------------------------------");
+                    foreach (var a in reviewss4)
+                    {
+                        Console.WriteLine($"{a.NameId}::{a.Average}::{a.ReviewCount}");
+                    }
+                    Console.WriteLine("-----------------------------------------");
+                    var reviewss5 = dbContext.Places.Where(x => x.Reviews.All(y => y.Stars >= 4));
+                    foreach (var a in reviewss5)
+                    {
+                        Console.WriteLine($"{a.Name}");
+                    }
+                    Console.WriteLine("-----------------------------------------");
+                    var reviewss6 = dbContext.Places.Where(x => x.Reviews.Any(y => y.Stars >= 4.2));
+                    foreach (var a in reviewss6)
+                    {
+                        Console.WriteLine($"{a.Name}");
+                    }
+                    var reviewss7 = dbContext.Places.AsEnumerable().Where(x => x.Reviews.ToList().Exists(y => y.Stars >= 4.2));
+                    foreach (var a in reviewss7)
+                    {
+                        Console.WriteLine($"{a.Name}");
+                    }
+                }
+
+            }
+            //dbContext.Database.EnsureCreated();
+            //CategoryRepository categoryRepository = new CategoryRepository(dbContext);
+            //Category category1 = new Category
+            //{
+            //    Name = "Fun",
+            //    Id = new Guid(),
+            //    Description = "You could come here if you want to party"
+            //};
+            //categoryRepository.AddCategory(category1);
+            //List < Category >categories= new List<Category>();
+            //categories.Add(category1);
+
+            //Category category2 = new Category
+            //{
+            //    Name = "Amusementt",
+            //    Id = new Guid(),
+            //    Description = "You could come here if you want to joke"
+            //};
+            //categoryRepository.AddCategory(category2);
+            //Category category3 = new Category
+            //{
+            //    Name = "asdasdasd",
+            //    Id = new Guid(),
+            //    Description = "You could come here if you want to asdasdas"
+            //};
+            //categoryRepository.AddCategory(category3);
+            //Domain.Country country = new Domain.Country
+            //{
+            //    Id = new Guid(),
+            //    Name = "Romania",
+
+            //};
+            //CountryRepository countryRepository = new CountryRepository(dbContext);
+            //countryRepository.AddCountry(country);
+            //categories.Add(category2);
+            //City city1 = new City
+            //{
+            //    Name = "Alba",
+            //    Id = new Guid(),
+            //};
+            //City city2 = new City
+            //{
+            //    Name = "Sibiu",
+            //    Id = new Guid(),
+            //};
+            //City city3 = new City
+            //{
+            //    Name = "Timisoara",
+            //    Id = new Guid(),
+            //};
+            //City city4 = new City
+            //{
+            //    Name = "Bucuresti",
+            //    Id = new Guid(),
+            //};
+            //ICollection<City> cities = new List<City>();
+            //cities.Add(city1);
+            //cities.Add(city2);
+            //cities.Add(city3);
+            //cities.Add(city4);
+            //city1.Country = country;
+            //city2.Country = country;
+            //city3.Country = country;
+            //city4.Country = country;
+            //CityRepository cityRepository = new CityRepository(dbContext);
+            //cityRepository.AddCity(city1);
+            //cityRepository.AddCity(city2);
+            //cityRepository.AddCity(city3);
+            //cityRepository.AddCity(city4);
+            //Place martinuzzi = new Place
+            //{
+            //    Id = new Guid(),
+            //    Name = "Martinuzzi",
+            //    CityId = city1.Id,
+            //    Rating = 0,
+            //    AvgStars = 0,
+            //    Categories = categories,
+            //    Address = "str.Alba,nr22",
+            //    NumberOfReview = 0,
+            //    City = city1,
+            //};
+            //city1.Places = new List<Place>();
+            //city1.Places.Add(martinuzzi);
+            //PlaceRepository placeRepository = new PlaceRepository(dbContext);
+            //placeRepository.AddPlace(martinuzzi);
+            //Review review = new Review
+            //{
+            //    Id = new Guid(),
+            //    Stars = 4,
+            //    Place = martinuzzi,
+            //    PlaceId = martinuzzi.Id,
+            //    CostOfPlace = Price.Affordable
+            //};
+            //martinuzzi.Reviews = new List<Review>();
+
+            //Review review1 = new Review
+            //{
+            //    Id = new Guid(),
+            //    Stars = 5,
+            //    Place = martinuzzi,
+            //    PlaceId = martinuzzi.Id,
+            //    CostOfPlace = Price.Affordable
+            //};
+
+            //ReviewRepository reviewRepository = new ReviewRepository(dbContext);
+            //reviewRepository.Add(review);
+            //reviewRepository.Add(review1);
+            ////////////////////////////////////////////////
+            //List<Review> revv = new List<Review>();
+            //revv.Add(review);
+            //martinuzzi.Reviews = revv;
+            //CityRepository cityRepository = new CityRepository(dbContext);
+            //cityRepository.AddCity(city1);
+            //cityRepository.AddCity(city2);
+            //cityRepository.AddCity(city3);
+            //cityRepository.AddCity(city4);
+            //PlaceRepository placeRepository = new PlaceRepository(dbContext);
+            //placeRepository.AddPlace(martinuzzi);
+            //ReviewRepository reviewRepository = new ReviewRepository(dbContext);
+            //reviewRepository.Add(review);
+            //categoryRepository.AddCategory(category2);
+
+            //Console.WriteLine("Doneeee");
+            //ICollection<Guid> categoriesId = new List<Guid>();
+            //categoriesId.Add(category3.Id);
+            ////categoriesId.Add(category1.Id);
+            //ICollection<Place> result= placeRepository.GetAllByCityIdAndCategoryId(city1.Id,categoriesId);
+            //foreach(Place a in result)
+            //{
+            //    Console.WriteLine(a);
+            //}
+
+
 
             //Guid asd = new Guid();
             //PlaceRepository place= new PlaceRepository();
@@ -222,7 +469,43 @@ namespace Project
 
 
         }
-
+        public static ICollection<Category> GetAllCategories(ReviewNowContext dbContext)
+        {
+            var categoryRepository = new CategoryRepository(dbContext);
+            return categoryRepository.GetAll();
+        }
+        public static void AddPlace(ReviewNowContext dbContext,Place place)
+        {
+            var placeRepository = new PlaceRepository(dbContext);
+            placeRepository.AddPlace(place);
+        }
+        public static void AddPlace(ReviewNowContext dbContext, Place place, Review review)
+        {
+            var placeRepository = new PlaceRepository(dbContext);
+            placeRepository.AddPlace(place);
+            var reviewRepostory = new ReviewRepository(dbContext);
+            reviewRepostory.Add(review);
+        }
+        public static ICollection<Place> GetAllPlacesByCityId(ReviewNowContext dbContext,Guid city)
+        { 
+            var placeRepository = new PlaceRepository(dbContext);
+            return placeRepository.GetAllByCityId(city);
+        }
+        public static ICollection<Place> GetAllPlacesByCityIdAndCategoryId(ReviewNowContext dbContext, Guid city, ICollection<Guid> categories)
+        {
+            var placeRepository = new PlaceRepository(dbContext);
+            return placeRepository.GetAllByCityIdAndCategoryId(city,categories);
+        }
+        public static ICollection<Place> GetAllPlacesByCategory(ReviewNowContext dbContext,ICollection<Guid> categories)
+        {
+            var placeRepository = new PlaceRepository(dbContext);
+            return placeRepository.GetAllByCategoryId(categories);
+        }
+        public static ICollection<Place> GetAllPlacesByCategoryIdAndCountryId(ReviewNowContext dbContext, ICollection<Guid> categories,Guid CountryId)
+        {
+            var placeRepository = new PlaceRepository(dbContext);
+            return placeRepository.GetAllByCategoryIdAndCountryId(categories,CountryId);
+        }
         //public static List<string> GetCountryList()
         //{
         //    List<string> cultureList = new List<string>();

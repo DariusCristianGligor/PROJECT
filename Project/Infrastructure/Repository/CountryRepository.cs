@@ -1,6 +1,6 @@
 ﻿using Application;
 using Domain;
-using infrastructure;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,17 @@ namespace Infrastructure
         public void AddCountry(Country country)
         {
             _dbContext.Countries.Add(country);
-      
+            _dbContext.SaveChanges();
+        }
+
+        public List<Country> GetAllCountriesWithCities()
+        {
+            List<Country> countries=_dbContext.Countries
+                .Include(c => c.Cities)
+                .ThenInclude(ci => ci.Country)
+                .ToList();
+            return countries;
+            //eager loading
         }
     }
 }

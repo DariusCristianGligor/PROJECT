@@ -1,6 +1,5 @@
 ﻿using Application;
 using Domain;
-using infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +23,15 @@ namespace Infrastructure
             
             return _dbContext.Cities.Where(x => x.CountryId == countryId).ToList();
         }
+        public ICollection<Place> GetPlaceOrderedByRating()
+        {
+            return _dbContext.Places.OrderByDescending(x=>x.Rating).ToList();
+        }
         public void AddCity(City city)
         {
             _dbContext.Cities.Add(city);
-           
+            _dbContext.SaveChanges();
+
         }
     }
 }

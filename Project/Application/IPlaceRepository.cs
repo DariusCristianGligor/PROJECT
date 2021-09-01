@@ -11,5 +11,6 @@ namespace Application
     {
         ICollection<Place> GetAllByCityId(Guid city);
         ICollection<Place> GetAllByCityIdAndCategoryId(Guid cityId, ICollection<Guid> categoriesId);
+        ICollection<Place> GetAllOrderedByRating();
     }
 }

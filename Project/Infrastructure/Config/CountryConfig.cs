@@ -6,18 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using CountryData.Standard;
 
 namespace Infrastructure
 {
-    class CountryConfig : IEntityTypeConfiguration<Country>
+    class CountryConfig : IEntityTypeConfiguration<Domain.Country>
     {
-        public void Configure(EntityTypeBuilder<Country> builder)
+        public void Configure(EntityTypeBuilder<Domain.Country> builder)
         {
-            builder.Property(x => x.Name)
-                .HasMaxLength(30);
             builder.HasMany<City>(x => x.Cities)
                 .WithOne(c => c.Country)
                 .HasForeignKey(c=>c.CountryId);
+            
         }
     }
 }

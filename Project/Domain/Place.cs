@@ -11,8 +11,8 @@ namespace Domain
         public Guid Id { set; get; }
         public string Name { set; get; }
         public string Address { set; get; }
-        public float SumStarts{ set; get; }
-        public float Avg {set; get;}
+        public float Rating{ set; get; }
+        public float AvgStars { set; get;}
         public int NumberOfReview { set; get; }
         public Guid CityId { set; get; }
         public City City { set; get; }
